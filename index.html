@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>All Laboratory Tests - Complete Suite</title>
+    <!-- HTML2PDF LIBRARY FOR NATIVE ANDROID/MOBILE SUPPORT -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         /* GLOBAL RESET FOR MAIN NAVIGATION ONLY */
         body {
@@ -7761,7 +7763,7 @@
         }
     </script>
 
-    <!-- PRINT HANDLER FOR IFRAMES -->
+    <!-- PRINT HANDLER FOR IFRAMES (PDF Fallback) -->
     <script>
         window.addEventListener('message', function (event) {
             if (event.data === 'trigger_print') {
@@ -7797,18 +7799,44 @@
 
                             // 3. Clone styles and body HTML into the print container
                             const styles = Array.from(doc.querySelectorAll('style, link')).map(el => el.outerHTML).join('\n');
-                            printContainer.innerHTML = styles + '<div class="iframe-print-wrap">' + doc.body.innerHTML + '</div>';
+                            printContainer.innerHTML = styles + '<div class="iframe-print-wrap" style="padding: 20px;">' + doc.body.innerHTML + '</div>';
 
-                            // 4. Trigger print from the main window
-                            setTimeout(() => {
-                                window.print();
-                                // Clean up after a short delay
-                                setTimeout(() => { printContainer.innerHTML = ''; }, 1000);
-                            }, 300);
+                            // Ensure the container is briefly visible for rendering (off-screen)
+                            printContainer.style.display = 'block';
+                            printContainer.style.position = 'absolute';
+                            printContainer.style.left = '-9999px';
+                            printContainer.style.top = '0';
+
+                            // 4. Generate PDF using html2pdf
+                            const opt = {
+                                margin: 0.5,
+                                filename: 'Laboratory_Test_Report.pdf',
+                                image: { type: 'jpeg', quality: 0.98 },
+                                html2canvas: { scale: 2, useCORS: true },
+                                jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+                            };
+
+                            // Show loading indicator
+                            const titleEl = document.querySelector('.nav-title');
+                            const originalTitle = titleEl.innerText;
+                            titleEl.innerText = '⏳ GENERATING PDF... PLEASE WAIT';
+
+                            html2pdf().set(opt).from(printContainer).save().then(() => {
+                                // Clean up after successful generation
+                                titleEl.innerText = originalTitle;
+                                setTimeout(() => {
+                                    printContainer.innerHTML = '';
+                                    printContainer.style.display = 'none';
+                                }, 500);
+                            }).catch(err => {
+                                titleEl.innerText = originalTitle;
+                                console.error('PDF Generation failed', err);
+                                alert('PDF generation failed. Try desktop. Error: ' + err.message);
+                            });
 
                         } catch (e) {
-                            console.error('Mobile print extraction error:', e);
-                            alert('Print extraction failed. Try using desktop. ' + e.message);
+                            console.error('Mobile PDF extraction error:', e);
+                            alert('Extraction failed. Error: ' + e.message);
                         }
                     }
                 }
