@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -22,10 +23,10 @@
             left: 0;
             right: 0;
             z-index: 999999;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
         }
-        
+
         .main-navigation.minimized {
             width: 60px;
             height: 60px;
@@ -34,9 +35,9 @@
             right: 10px;
             top: 10px;
         }
-        
+
         .nav-drag-handle {
-            background: rgba(0,0,0,0.1);
+            background: rgba(0, 0, 0, 0.1);
             padding: 12px;
             cursor: move;
             user-select: none;
@@ -47,7 +48,7 @@
             -webkit-user-select: none;
             -webkit-touch-callout: none;
         }
-        
+
         .minimized .nav-drag-handle {
             border-radius: 50%;
             justify-content: center;
@@ -64,13 +65,13 @@
             margin: 0;
             flex: 1;
         }
-        
+
         .minimized .nav-title {
             display: none;
         }
-        
+
         .nav-minimize-btn {
-            background: rgba(255,255,255,0.3);
+            background: rgba(255, 255, 255, 0.3);
             border: none;
             color: white;
             width: 28px;
@@ -83,11 +84,11 @@
             align-items: center;
             justify-content: center;
         }
-        
+
         .minimized .nav-minimize-btn {
             display: none;
         }
-        
+
         .nav-minimized-icon {
             display: none;
             font-size: 30px;
@@ -96,15 +97,15 @@
             left: 50%;
             transform: translate(-50%, -50%);
         }
-        
+
         .minimized .nav-minimized-icon {
             display: block;
         }
-        
+
         .nav-content {
             padding: 15px;
         }
-        
+
         .minimized .nav-content {
             display: none;
         }
@@ -118,9 +119,9 @@
         }
 
         .nav-btn {
-            background: rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.2);
             color: white;
-            border: 2px solid rgba(255,255,255,0.3);
+            border: 2px solid rgba(255, 255, 255, 0.3);
             padding: 10px 15px;
             cursor: pointer;
             border-radius: 6px;
@@ -131,7 +132,7 @@
         }
 
         .nav-btn:hover {
-            background: rgba(255,255,255,0.3);
+            background: rgba(255, 255, 255, 0.3);
             border-color: white;
             transform: translateY(-2px);
         }
@@ -145,7 +146,8 @@
         /* TEST CONTAINERS */
         .test-wrapper {
             display: none;
-            margin-top: 160px; /* Space for fixed navigation */
+            margin-top: 160px;
+            /* Space for fixed navigation */
             min-height: calc(100vh - 160px);
         }
 
@@ -164,7 +166,7 @@
             background: white;
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 30px;
             text-align: center;
         }
@@ -184,7 +186,7 @@
             background: white;
             padding: 25px;
             border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 25px;
         }
 
@@ -230,17 +232,43 @@
             .nav-grid {
                 grid-template-columns: 1fr 1fr;
             }
-            
+
             .main-navigation {
                 padding: 10px;
             }
-            
+
             .test-wrapper {
                 margin-top: 200px;
             }
         }
+
+        @media print {
+            body>*:not(#print-container) {
+                display: none !important;
+            }
+
+            #print-container {
+                display: block !important;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                background: white;
+            }
+
+            .main-navigation {
+                display: none !important;
+            }
+        }
+
+        @media screen {
+            #print-container {
+                display: none !important;
+            }
+        }
     </style>
 </head>
+
 <body>
 
     <!-- FIXED NAVIGATION - DRAGGABLE -->
@@ -274,7 +302,8 @@
             <div class="welcome-box">
                 <h1>🎯 Welcome to Complete Lab Test Suite</h1>
                 <p><strong>All 11 laboratory test generators in ONE single file!</strong></p>
-                <p>Click any button at the top to open that test generator. Each test is fully functional with bulk generation, auto-calculations, and print support.</p>
+                <p>Click any button at the top to open that test generator. Each test is fully functional with bulk
+                    generation, auto-calculations, and print support.</p>
             </div>
 
             <div class="category-box">
@@ -343,8 +372,7 @@
 
     <!-- BM Gradation TEST -->
     <div id="bm_gradation" class="test-wrapper">
-        <iframe 
-            srcdoc="<!DOCTYPE html>
+        <iframe srcdoc="<!DOCTYPE html>
 <html lang=&quot;en&quot;>
 <head>
     <meta charset=&quot;UTF-8&quot;>
@@ -994,16 +1022,13 @@
 </script>
 
 </body>
-</html>"
-            style="width: 100%; height: calc(100vh - 160px); border: none; display: block;"
-            sandbox="allow-scripts allow-same-origin allow-forms allow-modals"
-        ></iframe>
+</html>" style="width: 100%; height: calc(100vh - 160px); border: none; display: block;"
+            sandbox="allow-scripts allow-same-origin allow-forms allow-modals"></iframe>
     </div>
 
     <!-- SDBC Gradation TEST -->
     <div id="sdbc_gradation" class="test-wrapper">
-        <iframe 
-            srcdoc="<!DOCTYPE html>
+        <iframe srcdoc="<!DOCTYPE html>
 <html lang=&quot;en&quot;>
 <head>
     <meta charset=&quot;UTF-8&quot;>
@@ -1643,16 +1668,13 @@
 
 </script>
 </body>
-</html>"
-            style="width: 100%; height: calc(100vh - 160px); border: none; display: block;"
-            sandbox="allow-scripts allow-same-origin allow-forms allow-modals"
-        ></iframe>
+</html>" style="width: 100%; height: calc(100vh - 160px); border: none; display: block;"
+            sandbox="allow-scripts allow-same-origin allow-forms allow-modals"></iframe>
     </div>
 
     <!-- WBM-II Gradation TEST -->
     <div id="wbm_ii_gradation" class="test-wrapper">
-        <iframe 
-            srcdoc="<!DOCTYPE html>
+        <iframe srcdoc="<!DOCTYPE html>
 <html lang=&quot;en&quot;>
 <head>
     <meta charset=&quot;UTF-8&quot;>
@@ -2282,16 +2304,13 @@
 
 </script>
 </body>
-</html>"
-            style="width: 100%; height: calc(100vh - 160px); border: none; display: block;"
-            sandbox="allow-scripts allow-same-origin allow-forms allow-modals"
-        ></iframe>
+</html>" style="width: 100%; height: calc(100vh - 160px); border: none; display: block;"
+            sandbox="allow-scripts allow-same-origin allow-forms allow-modals"></iframe>
     </div>
 
     <!-- WBM-III Gradation TEST -->
     <div id="wbm_iii_gradation" class="test-wrapper">
-        <iframe 
-            srcdoc="<!DOCTYPE html>
+        <iframe srcdoc="<!DOCTYPE html>
 <html lang=&quot;en&quot;>
 <head>
     <meta charset=&quot;UTF-8&quot;>
@@ -2928,16 +2947,13 @@
 
 </script>
 </body>
-</html>"
-            style="width: 100%; height: calc(100vh - 160px); border: none; display: block;"
-            sandbox="allow-scripts allow-same-origin allow-forms allow-modals"
-        ></iframe>
+</html>" style="width: 100%; height: calc(100vh - 160px); border: none; display: block;"
+            sandbox="allow-scripts allow-same-origin allow-forms allow-modals"></iframe>
     </div>
 
     <!-- WMM Gradation TEST -->
     <div id="wmm_gradation" class="test-wrapper">
-        <iframe 
-            srcdoc="<!DOCTYPE html>
+        <iframe srcdoc="<!DOCTYPE html>
 <html lang=&quot;en&quot;>
 <head>
     <meta charset=&quot;UTF-8&quot;>
@@ -3582,16 +3598,13 @@
 
 </script>
 </body>
-</html>"
-            style="width: 100%; height: calc(100vh - 160px); border: none; display: block;"
-            sandbox="allow-scripts allow-same-origin allow-forms allow-modals"
-        ></iframe>
+</html>" style="width: 100%; height: calc(100vh - 160px); border: none; display: block;"
+            sandbox="allow-scripts allow-same-origin allow-forms allow-modals"></iframe>
     </div>
 
     <!-- GSB-I Gradation TEST -->
     <div id="gsb_i_gradation" class="test-wrapper">
-        <iframe 
-            srcdoc="<!DOCTYPE html>
+        <iframe srcdoc="<!DOCTYPE html>
 <html lang=&quot;en&quot;>
 <head>
     <meta charset=&quot;UTF-8&quot;>
@@ -4220,16 +4233,13 @@
 
 </script>
 </body>
-</html>"
-            style="width: 100%; height: calc(100vh - 160px); border: none; display: block;"
-            sandbox="allow-scripts allow-same-origin allow-forms allow-modals"
-        ></iframe>
+</html>" style="width: 100%; height: calc(100vh - 160px); border: none; display: block;"
+            sandbox="allow-scripts allow-same-origin allow-forms allow-modals"></iframe>
     </div>
 
     <!-- GSB-II Gradation TEST -->
     <div id="gsb_ii_gradation" class="test-wrapper">
-        <iframe 
-            srcdoc="<!DOCTYPE html>
+        <iframe srcdoc="<!DOCTYPE html>
 <html lang=&quot;en&quot;>
 <head>
     <meta charset=&quot;UTF-8&quot;>
@@ -4864,16 +4874,13 @@
 
 </script>
 </body>
-</html>"
-            style="width: 100%; height: calc(100vh - 160px); border: none; display: block;"
-            sandbox="allow-scripts allow-same-origin allow-forms allow-modals"
-        ></iframe>
+</html>" style="width: 100%; height: calc(100vh - 160px); border: none; display: block;"
+            sandbox="allow-scripts allow-same-origin allow-forms allow-modals"></iframe>
     </div>
 
     <!-- BM Binder TEST -->
     <div id="bm_binder" class="test-wrapper">
-        <iframe 
-            srcdoc="<!DOCTYPE html>
+        <iframe srcdoc="<!DOCTYPE html>
 <html lang=&quot;en&quot;>
 <head>
     <meta charset=&quot;UTF-8&quot;>
@@ -5493,16 +5500,13 @@
 
 </script>
 </body>
-</html>"
-            style="width: 100%; height: calc(100vh - 160px); border: none; display: block;"
-            sandbox="allow-scripts allow-same-origin allow-forms allow-modals"
-        ></iframe>
+</html>" style="width: 100%; height: calc(100vh - 160px); border: none; display: block;"
+            sandbox="allow-scripts allow-same-origin allow-forms allow-modals"></iframe>
     </div>
 
     <!-- MSS Binder TEST -->
     <div id="mss_binder" class="test-wrapper">
-        <iframe 
-            srcdoc="<!DOCTYPE html>
+        <iframe srcdoc="<!DOCTYPE html>
 <html lang=&quot;en&quot;>
 <head>
     <meta charset=&quot;UTF-8&quot;>
@@ -6116,16 +6120,13 @@
 
 </script>
 </body>
-</html>"
-            style="width: 100%; height: calc(100vh - 160px); border: none; display: block;"
-            sandbox="allow-scripts allow-same-origin allow-forms allow-modals"
-        ></iframe>
+</html>" style="width: 100%; height: calc(100vh - 160px); border: none; display: block;"
+            sandbox="allow-scripts allow-same-origin allow-forms allow-modals"></iframe>
     </div>
 
     <!-- SDBC Binder TEST -->
     <div id="sdbc_binder" class="test-wrapper">
-        <iframe 
-            srcdoc="<!DOCTYPE html>
+        <iframe srcdoc="<!DOCTYPE html>
 <html lang=&quot;en&quot;>
 <head>
     <meta charset=&quot;UTF-8&quot;>
@@ -6740,16 +6741,13 @@
 </script>
 </body>
 </html>
-}"
-            style="width: 100%; height: calc(100vh - 160px); border: none; display: block;"
-            sandbox="allow-scripts allow-same-origin allow-forms allow-modals"
-        ></iframe>
+}" style="width: 100%; height: calc(100vh - 160px); border: none; display: block;"
+            sandbox="allow-scripts allow-same-origin allow-forms allow-modals"></iframe>
     </div>
 
     <!-- Concrete Cube TEST -->
     <div id="concrete_cube" class="test-wrapper">
-        <iframe 
-            srcdoc="<!DOCTYPE html>
+        <iframe srcdoc="<!DOCTYPE html>
 <html lang=&quot;en&quot;>
 <head>
     <meta charset=&quot;UTF-8&quot;>
@@ -7591,10 +7589,8 @@
 
 </script>
 </body>
-</html>"
-            style="width: 100%; height: calc(100vh - 160px); border: none; display: block;"
-            sandbox="allow-scripts allow-same-origin allow-forms allow-modals"
-        ></iframe>
+</html>" style="width: 100%; height: calc(100vh - 160px); border: none; display: block;"
+            sandbox="allow-scripts allow-same-origin allow-forms allow-modals"></iframe>
     </div>
 
 
@@ -7604,30 +7600,30 @@
             document.querySelectorAll('.test-wrapper').forEach(wrapper => {
                 wrapper.classList.remove('active');
             });
-            
+
             // Remove active from all buttons
             document.querySelectorAll('.nav-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-            
+
             // Show selected test
             document.getElementById(testId).classList.add('active');
-            
+
             // Activate button
             event.target.classList.add('active');
-            
+
             // Scroll to top
-            window.scrollTo({top: 0, behavior: 'smooth'});
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-        
+
         // Log loaded message
         console.log('✅ All 11 laboratory tests loaded successfully!');
         console.log('📊 7 Gradation Tests');
         console.log('🛢️ 3 Binder Content Tests');
         console.log('🧱 1 Concrete Cube Test');
-        
+
         // ========== DRAGGABLE NAVIGATION (MOBILE FIXED) ==========
-        (function() {
+        (function () {
             let isDraggingNav = false;
             let startX = 0;
             let startY = 0;
@@ -7636,150 +7632,183 @@
             let hasMoved = false;
             const mainNav = document.getElementById('mainNav');
             const navDragHandle = document.getElementById('navDragHandle');
-            
+
             if (navDragHandle) {
                 // Use touchstart for mobile, mousedown for desktop
                 navDragHandle.addEventListener('touchstart', handleNavTouchStart, { passive: false });
                 navDragHandle.addEventListener('mousedown', handleNavMouseStart);
             }
-            
+
             function handleNavTouchStart(e) {
                 if (mainNav.classList.contains('minimized')) {
                     toggleNavMinimize();
                     return;
                 }
-                
+
                 const touch = e.touches[0];
                 startX = touch.clientX;
                 startY = touch.clientY;
-                
+
                 const rect = mainNav.getBoundingClientRect();
                 navOffsetX = touch.clientX - rect.left;
                 navOffsetY = touch.clientY - rect.top;
-                
+
                 hasMoved = false;
                 isDraggingNav = true;
                 mainNav.style.transition = 'none';
-                
+
                 document.addEventListener('touchmove', handleNavTouchMove, { passive: false });
                 document.addEventListener('touchend', handleNavTouchEnd);
             }
-            
+
             function handleNavMouseStart(e) {
                 if (mainNav.classList.contains('minimized')) {
                     toggleNavMinimize();
                     return;
                 }
-                
+
                 startX = e.clientX;
                 startY = e.clientY;
-                
+
                 const rect = mainNav.getBoundingClientRect();
                 navOffsetX = e.clientX - rect.left;
                 navOffsetY = e.clientY - rect.top;
-                
+
                 hasMoved = false;
                 isDraggingNav = true;
                 mainNav.style.transition = 'none';
-                
+
                 document.addEventListener('mousemove', handleNavMouseMove);
                 document.addEventListener('mouseup', handleNavMouseEnd);
             }
-            
+
             function handleNavTouchMove(e) {
                 if (!isDraggingNav) return;
-                
+
                 const touch = e.touches[0];
                 const deltaX = Math.abs(touch.clientX - startX);
                 const deltaY = Math.abs(touch.clientY - startY);
-                
+
                 // Only start dragging if moved more than 5px
                 if (deltaX > 5 || deltaY > 5) {
                     hasMoved = true;
-                    
+
                     let newX = touch.clientX - navOffsetX;
                     let newY = touch.clientY - navOffsetY;
-                    
+
                     const maxX = window.innerWidth - mainNav.offsetWidth;
                     const maxY = window.innerHeight - mainNav.offsetHeight;
-                    
+
                     newX = Math.max(0, Math.min(newX, maxX));
                     newY = Math.max(0, Math.min(newY, maxY));
-                    
+
                     mainNav.style.left = newX + 'px';
                     mainNav.style.top = newY + 'px';
                     mainNav.style.right = 'auto';
-                    
+
                     e.preventDefault();
                 }
             }
-            
+
             function handleNavMouseMove(e) {
                 if (!isDraggingNav) return;
-                
+
                 const deltaX = Math.abs(e.clientX - startX);
                 const deltaY = Math.abs(e.clientY - startY);
-                
+
                 if (deltaX > 5 || deltaY > 5) {
                     hasMoved = true;
-                    
+
                     let newX = e.clientX - navOffsetX;
                     let newY = e.clientY - navOffsetY;
-                    
+
                     const maxX = window.innerWidth - mainNav.offsetWidth;
                     const maxY = window.innerHeight - mainNav.offsetHeight;
-                    
+
                     newX = Math.max(0, Math.min(newX, maxX));
                     newY = Math.max(0, Math.min(newY, maxY));
-                    
+
                     mainNav.style.left = newX + 'px';
                     mainNav.style.top = newY + 'px';
                     mainNav.style.right = 'auto';
                 }
             }
-            
+
             function handleNavTouchEnd() {
                 if (isDraggingNav) {
                     mainNav.style.transition = 'all 0.3s ease';
                 }
                 isDraggingNav = false;
-                
+
                 document.removeEventListener('touchmove', handleNavTouchMove);
                 document.removeEventListener('touchend', handleNavTouchEnd);
             }
-            
+
             function handleNavMouseEnd() {
                 if (isDraggingNav) {
                     mainNav.style.transition = 'all 0.3s ease';
                 }
                 isDraggingNav = false;
-                
+
                 document.removeEventListener('mousemove', handleNavMouseMove);
                 document.removeEventListener('mouseup', handleNavMouseEnd);
             }
         })();
-        
+
         function toggleNavMinimize() {
             const mainNav = document.getElementById('mainNav');
             mainNav.classList.toggle('minimized');
         }
     </script>
 
-<!-- PRINT HANDLER FOR IFRAMES -->
+    <!-- PRINT HANDLER FOR IFRAMES -->
     <script>
-        window.addEventListener('message', function(event) {
+        window.addEventListener('message', function (event) {
             if (event.data === 'trigger_print') {
-                // Find the active iframe and trigger print
                 const activeWrapper = document.querySelector('.test-wrapper.active');
                 if (activeWrapper && activeWrapper.id !== 'home') {
                     const iframe = activeWrapper.querySelector('iframe');
-                    if (iframe && iframe.contentWindow) {
+                    if (iframe && iframe.contentDocument) {
                         try {
-                            iframe.contentWindow.focus();
-                            iframe.contentWindow.print();
+                            const doc = iframe.contentDocument;
+
+                            // 1. Sync inputs to DOM attributes so they clone correctly
+                            doc.querySelectorAll('input, select, textarea').forEach(el => {
+                                if (el.type === 'checkbox' || el.type === 'radio') {
+                                    if (el.checked) el.setAttribute('checked', 'checked');
+                                    else el.removeAttribute('checked');
+                                } else if (el.tagName === 'SELECT') {
+                                    Array.from(el.options).forEach(opt => {
+                                        if (opt.selected) opt.setAttribute('selected', 'selected');
+                                        else opt.removeAttribute('selected');
+                                    });
+                                } else {
+                                    el.setAttribute('value', el.value);
+                                }
+                            });
+
+                            // 2. Setup print container in the main document
+                            let printContainer = document.getElementById('print-container');
+                            if (!printContainer) {
+                                printContainer = document.createElement('div');
+                                printContainer.id = 'print-container';
+                                document.body.appendChild(printContainer);
+                            }
+
+                            // 3. Clone styles and body HTML into the print container
+                            const styles = Array.from(doc.querySelectorAll('style, link')).map(el => el.outerHTML).join('\n');
+                            printContainer.innerHTML = styles + '<div class="iframe-print-wrap">' + doc.body.innerHTML + '</div>';
+
+                            // 4. Trigger print from the main window
+                            setTimeout(() => {
+                                window.print();
+                                // Clean up after a short delay
+                                setTimeout(() => { printContainer.innerHTML = ''; }, 1000);
+                            }, 300);
+
                         } catch (e) {
-                            console.error('Error printing iframe:', e);
-                            alert('Printing not supported in this mobile browser view. Try taking a screenshot or use desktop.');
+                            console.error('Mobile print extraction error:', e);
+                            alert('Print extraction failed. Try using desktop. ' + e.message);
                         }
                     }
                 }
@@ -7787,4 +7816,5 @@
         }, false);
     </script>
 </body>
+
 </html>
