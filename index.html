@@ -7765,5 +7765,26 @@
         }
     </script>
 
+<!-- PRINT HANDLER FOR IFRAMES -->
+    <script>
+        window.addEventListener('message', function(event) {
+            if (event.data === 'trigger_print') {
+                // Find the active iframe and trigger print
+                const activeWrapper = document.querySelector('.test-wrapper.active');
+                if (activeWrapper && activeWrapper.id !== 'home') {
+                    const iframe = activeWrapper.querySelector('iframe');
+                    if (iframe && iframe.contentWindow) {
+                        try {
+                            iframe.contentWindow.focus();
+                            iframe.contentWindow.print();
+                        } catch (e) {
+                            console.error('Error printing iframe:', e);
+                            alert('Printing not supported in this mobile browser view. Try taking a screenshot or use desktop.');
+                        }
+                    }
+                }
+            }
+        }, false);
+    </script>
 </body>
 </html>
